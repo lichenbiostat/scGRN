@@ -11,14 +11,15 @@ Identifying GRN (gene regulatory network) can help us better understand gene act
 
 ## Prerequisite
 
-Our package needs to import the following R packages to work.
+Our pipeline needs to import the following R packages to work.
 
-> GenomicInteractions, GenomicRanges, GenomicFeatures, GenomeInfoDb, IRanges, S4Vectors,
-biomaRt, TFBSTools, glmnet, motifmatchr, data.table, dplyr, parallel, doParallel, foreach
+##### Packages available in CRAN
+>  glmnet, data.table, dplyr, parallel, doParallel, foreach
 
-Besides, data from packages *BSgenome.Hsapiens.UCSC.hg19*, *TxDb.Hsapiens.UCSC.hg19.knownGene* and *JASPAR2018* are also used for our project.
+##### Packages available in Binconductor
+>  GenomicInteractions, GenomicRanges, GenomicFeatures, GenomeInfoDb, IRanges, S4Vectors, biomaRt, TFBSTools, motifmatchr
 
-All of these packages can be installed either in Bioconductor or CRAN.
+Besides, data from packages *BSgenome.Hsapiens.UCSC.hg19*, *TxDb.Hsapiens.UCSC.hg19.knownGene* and *JASPAR2018* are also used for our project. These packages can also be installed in Bioconductor.
 
 ```R
 # For example, I want to download R package - GenomicInteractions
@@ -29,16 +30,6 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("GenomicInteractions")
 ```
 
-## Install scGRN R package
-The devtools package provides install_github() that enables people to install packages from GitHub. You can use the following code to download the scGRN package.
-
-```R
-install.packages("devtools")
-library(devtools)
-install_github("daifengwanglab/scGRN")
-```
-
-After the installation, you can directly use **library(scGRN)** to load the package.
 
 ## Functions in the package
 
@@ -100,7 +91,7 @@ gexpr = gexpr[,grep('Micro',colnames(gexpr))]
 gexpr = gexpr[rowSums(gexpr != 0) > 5,]
 ```
 
-Now we will start using the functions in our package.
+Now we will start running our pipeline.
 
 **Step1: find interaction**
 
